@@ -1,0 +1,46 @@
+.sliderWrapper {
+  width: 90%;
+  display: grid;
+  margin: 0 auto;
+
+  grid-template-columns: repeat(4, calc(100% / 4));
+  grid-template-rows: 82% 18%;
+  gap: 1rem;
+
+  img {
+    border-radius: 10px;
+  }
+}
+
+.activeImage {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  grid-column: 1 / 5;
+  grid-row: 1 / 2;
+}
+
+.imagePreview {
+  border-radius: 12px;
+  cursor: pointer;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &:hover {
+    img {
+      opacity: 0.6;
+    }
+  }
+}
+
+.activePreview {
+  border: 2px solid var(--orange);
+
+  img {
+    opacity: 0.3;
+  }
+}
