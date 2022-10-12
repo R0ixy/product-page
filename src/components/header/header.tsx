@@ -2,6 +2,7 @@ import { FC, useState } from 'react';
 import clsx from 'clsx';
 
 import { Cart } from '@components/cart/cart';
+import { useAppSelector } from '@hooks/hooks';
 
 import CartIcon from '@assets/images/icon-cart.svg';
 import avatar from '@assets/images/image-avatar.png';
@@ -14,6 +15,8 @@ import styles from './styles.module.scss';
 const Header: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const counter = useAppSelector((state) => state.cartReducer.items.length);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
@@ -40,6 +43,7 @@ const Header: FC = () => {
       </div>
       <div className={styles.rightIcons}>
         <img className={styles.cart} src={CartIcon} alt="cart" onClick={cartClickHandler}/>
+        {!!counter && <span className={styles.counter}>{counter}</span>}
         <img className={styles.avatar} src={avatar} alt="avatar"/>
       </div>
       {isCartOpen && <Cart/>}

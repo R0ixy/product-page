@@ -48,11 +48,23 @@
   .cart {
     width: 1.5rem;
     height: 1.5rem;
-    margin-right: 2rem;
     cursor: pointer;
   }
 
+  .counter{
+    color: var(--white);
+    font-size: 0.6rem;
+    position: relative;
+    right: 0.8rem;
+    top: -0.75rem;
+    background-color: var(--orange);
+    padding: 0 7px;
+    border-radius: 7px;
+    margin-right: -18px;
+  }
+
   .avatar {
+    margin-left: 2rem;
     width: 40px;
     height: 40px;
     border-radius: 50%;
