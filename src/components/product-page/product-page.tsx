@@ -1,15 +1,32 @@
 import { FC, useState } from 'react';
 
 import { ImagesSlider } from '@components/product-page/images-slider/images-slider';
-
-import styles from './styles.module.scss';
+import { useAppDispatch } from '@hooks/hooks';
+import { addToCart } from '@store/cart/slice';
 
 import iconCart from '@assets/images/icon-cart.svg';
 import iconPlus from '@assets/images/icon-plus.svg';
 import iconMinus from '@assets/images/icon-minus.svg';
 
+import styles from './styles.module.scss';
+
+const product = {
+  name: 'Fall Limited Edition Sneakers',
+  originalPrice: 250,
+  price: 125,
+  description: 'These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.',
+  discount: 50,
+}
+
 const ProductPage: FC = () => {
   const [quantity, setQuantity] = useState(0);
+  const dispatch = useAppDispatch();
+
+  const handleAddToCart = () => {
+    if (quantity) {
+      dispatch(addToCart({name: product.name, quantity, price: product.price}));
+    }
+  }
 
   return (
     <div className={styles.pageWrapper}>
@@ -18,13 +35,11 @@ const ProductPage: FC = () => {
       </div>
       <div className={styles.info}>
         <span className={styles.brand}>sneaker company</span>
-        <span className={styles.title}>Fall Limited Edition Sneakers</span>
-        <p className={styles.description}>These low-profile sneakers are your perfect casual wear companion. Featuring a
-          durable rubber outer sole,
-          they'll withstand everything the weather can offer.</p>
+        <span className={styles.title}>{product.name}</span>
+        <p className={styles.description}>{product.description}</p>
         <div className={styles.price}>
-          <span className={styles.priceValue}>$125.00</span> <span className={styles.discount}>50%</span>
-          <span className={styles.oldPriceValue}>$255.00</span>
+          <span className={styles.priceValue}>${product.price}</span> <span className={styles.discount}>{product.discount}%</span>
+          <span className={styles.oldPriceValue}>${product.originalPrice}</span>
         </div>
         <div className={styles.buttons}>
           <div className={styles.quantity}>
@@ -40,7 +55,8 @@ const ProductPage: FC = () => {
               <img src={iconPlus} alt="plus"/>
             </button>
           </div>
-          <button className={styles.addToCart}><img src={iconCart} alt="cart"/> Add to cart</button>
+          <button className={styles.addToCart} onClick={handleAddToCart}><img src={iconCart} alt="cart"/> Add to cart
+          </button>
         </div>
       </div>
     </div>

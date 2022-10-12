@@ -1,0 +1,46 @@
+.itemWrapper {
+  padding: 1rem 1rem 0 1rem;
+  display: grid;
+  grid-template-columns: 3.5rem auto 1rem;
+  grid-template-rows: 2rem 2rem;
+  gap: 0.5rem;
+}
+
+.productImage {
+  grid-row: 1/3;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 3px;
+}
+
+.title {
+  grid-column-start: 2;
+  color: var(--dark-grayish-blue);
+}
+
+.price {
+  grid-column-start: 2;
+  display: flex;
+  gap: 5px;
+
+  .singlePrice {
+    color: var(--dark-grayish-blue);
+    font-weight: 400;
+  }
+
+  .multiply {
+    color: var(--dark-grayish-blue);
+    font-weight: 400;
+  }
+
+  .totalPrice {
+    font-weight: 700;
+  }
+}
+
+.deleteIcon {
+  cursor: pointer;
+  align-self: center;
+  grid-row: 1/3;
+  grid-column-start: 3;
+}

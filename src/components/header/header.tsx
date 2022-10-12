@@ -1,18 +1,27 @@
 import { FC, useState } from 'react';
 import clsx from 'clsx';
 
-import styles from './styles.module.scss';
+import { Cart } from '@components/cart/cart';
+
 import CartIcon from '@assets/images/icon-cart.svg';
 import avatar from '@assets/images/image-avatar.png';
 import menuIcon from '@assets/images/icon-menu.svg';
 import closeIcon from '@assets/images/icon-close.svg';
 
+import styles from './styles.module.scss';
+
+
 const Header: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen((prev) => !prev);
-  }
+  };
+
+  const cartClickHandler = () => {
+    setIsCartOpen((prev) => !prev);
+  };
 
   return (
     <div className={styles.headerWrapper}>
@@ -30,10 +39,10 @@ const Header: FC = () => {
         </div>
       </div>
       <div className={styles.rightIcons}>
-        <img className={styles.cart} src={CartIcon} alt="cart"/>
+        <img className={styles.cart} src={CartIcon} alt="cart" onClick={cartClickHandler}/>
         <img className={styles.avatar} src={avatar} alt="avatar"/>
       </div>
-
+      {isCartOpen && <Cart/>}
     </div>
   );
 };
