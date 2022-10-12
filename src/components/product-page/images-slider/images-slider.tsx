@@ -32,8 +32,14 @@ const ImagesSlider: FC = () => {
     <div className={styles.sliderWrapper}>
       <img className={styles.activeImage} src={activeImage} alt="active product"/>
 
-      {previews.map((product) =>
-        (<div className={clsx(styles.imagePreview, (activeImage === products[product]) && styles.activePreview)}>
+      {previews.map((product, index) =>
+        (<div
+          className={clsx(
+            styles.imagePreview,
+            (activeImage === products[product]) && styles.activePreview
+          )}
+          key={index}
+        >
           <img
             src={product}
             alt="product"
