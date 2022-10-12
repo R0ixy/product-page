@@ -46,7 +46,7 @@ const Header: FC = () => {
         {!!counter && <span className={styles.counter}>{counter}</span>}
         <img className={styles.avatar} src={avatar} alt="avatar"/>
       </div>
-      {isCartOpen && <Cart/>}
+      {isCartOpen && <Cart closeCart={cartClickHandler}/>}
     </div>
   );
 };
