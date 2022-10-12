@@ -47,6 +47,11 @@
   }
 }
 
+.imageArrowLeft,
+.imageArrowRight {
+  display: none;
+}
+
 @media (max-width: $mobile) {
   .imagePreview {
     display: none;
@@ -62,5 +67,30 @@
       object-fit: cover;
     }
 
+  }
+
+  img {
+    &.imageArrowLeft,
+    &.imageArrowRight {
+      border-radius: 50%;
+    }
+  }
+
+  .imageArrowLeft,
+  .imageArrowRight {
+    display: block;
+    position: absolute;
+    background-color: var(--white);
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 1rem;
+    top: 15rem;
+  }
+
+  .imageArrowLeft {
+    left: 10px;
+  }
+  .imageArrowRight {
+    right: 10px;
   }
 }
